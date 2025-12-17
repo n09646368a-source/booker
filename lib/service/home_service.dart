@@ -8,8 +8,9 @@ Dio dio = Dio();
 Future<List<ApartmentModel>> getApartmentsList() async {
   try {
     Response response = await dio.get(
-      "https://dummyjson.com/c/e1a8-ac7e-4b5a-a6f2",
+      "http://127.0.0.1:8000/api/index",
     );
+    print(response.data);
     final listOfAPartmentsJson = response.data['data'] as List;
     final List<ApartmentModel> listOfAPartments = [];
     for (var jsonElement in listOfAPartmentsJson) {

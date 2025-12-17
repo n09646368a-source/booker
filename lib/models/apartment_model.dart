@@ -1,39 +1,57 @@
 import 'dart:convert';
 
-import 'package:flutter_application_6/models/price_model.dart';
-
 class ApartmentModel {
-  final String image;
-  final String name;
-  final String address;
-  final num rate;
-  final PriceModel price;
+  final int id;
+  final String location;
+  final num rentPrice;
+  final num salePrice;
+  final num apartmentSpace;
+  final int rooms;
+  final int floor;
+  final int bathrooms;
 
   ApartmentModel({
-    required this.image,
-    required this.name,
-    required this.address,
-    required this.rate,
-    required this.price,
+    required this.id,
+    required this.location,
+    required this.rentPrice,
+    required this.salePrice,
+    required this.apartmentSpace,
+    required this.rooms,
+    required this.floor,
+    required this.bathrooms,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'image': image,
-      'name': name,
-      'address': address,
-      'rate': rate,
-      'price': price.toMap(),
+      'id': id,
+      'location': location,
+      'rent_price': rentPrice,
+      'sale_price': salePrice,
+      'apartment_space': apartmentSpace,
+      'rooms': rooms,
+      'floor': floor,
+      'bathrooms': bathrooms,
     };
   }
 
   factory ApartmentModel.fromMap(Map<String, dynamic> map) {
     return ApartmentModel(
-      image: map['image'] as String,
-      name: map['name'] as String,
-      address: map['address'] as String,
-      rate: map['rate'] as num,
-      price: PriceModel.fromMap(map['price'] as Map<String, dynamic>),
+      id: (map['id'] is int)
+          ? map['id'] as int
+          : int.parse(map['id'].toString()),
+      location: map['location'] as String,
+      rentPrice: map['rent_price'] as num,
+      salePrice: map['sale_price'] as num,
+      apartmentSpace: map['apartment_space'] as num,
+      rooms: (map['rooms'] is int)
+          ? map['rooms'] as int
+          : int.parse(map['rooms'].toString()),
+      floor: (map['floor'] is int)
+          ? map['floor'] as int
+          : int.parse(map['floor'].toString()),
+      bathrooms: (map['bathrooms'] is int)
+          ? map['bathrooms'] as int
+          : int.parse(map['bathrooms'].toString()),
     );
   }
 

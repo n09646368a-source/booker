@@ -12,15 +12,17 @@ class ApartmentWidget extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => AppartmentDetailsScreen()),
+          MaterialPageRoute(builder: (context) => AppartmentDetailsScreen(model: model)),
         );
       },
       child: Row(
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Image.asset(
-              model.image,
+            child: Image.network(
+              // model.image,
+              'https://dummyimage.com/80x60/09f/fff.png'
+              ,
               width: 80,
               height: 60,
               fit: BoxFit.cover,
@@ -31,23 +33,23 @@ class ApartmentWidget extends StatelessWidget {
             spacing: 2,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(model.name, style: TextStyle(fontWeight: FontWeight.bold)),
+              Text(model.id.toString(), style: TextStyle(fontWeight: FontWeight.bold)),
               Row(
                 children: [
                   Icon(Icons.location_pin, size: 12, color: Colors.black45),
                   SizedBox(width: 6),
-                  Text(model.address, style: TextStyle(color: Colors.black45)),
+                  Text(model.location, style: TextStyle(color: Colors.black45)),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '\$${model.price.value}/${model.price.unit}',
+                    '\$${model.rentPrice} ',//${model.price.unit}',
                     style: TextStyle(fontSize: 12),
                   ),
                   SizedBox(width: 100),
-                  Text('⭐️${model.rate}', style: TextStyle(fontSize: 10)),
+                //  Text('⭐️${model.rate}', style: TextStyle(fontSize: 10)),
                 ],
               ),
             ],
