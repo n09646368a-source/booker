@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_6/ui_components/app_nav_bar.dart';
+import 'package:flutter_application_6/screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: AppNavBar());
+    return MaterialApp(home: const LoginScreen());
   }
 }
 
