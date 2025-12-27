@@ -10,6 +10,7 @@ abstract class HomeEvent extends Equatable {
 class LoadApartments extends HomeEvent {
   const LoadApartments();
 }
+
 class SearchApartments extends HomeEvent {
   final String query;
 
@@ -18,11 +19,22 @@ class SearchApartments extends HomeEvent {
   @override
   List<Object?> get props => [query];
 }
-class FilterApartments extends HomeEvent {
-  final Map<String, dynamic> filters;
 
-  const FilterApartments(this.filters);
+class FilterApartments extends HomeEvent {
+  final double? minPrice;
+  final double? maxPrice;
+  final int? rooms;
+  final String? governorate;
+  final String? city;
+
+  const FilterApartments({
+    this.minPrice,
+    this.maxPrice,
+    this.rooms,
+    this.governorate,
+    this.city,
+  });
 
   @override
-  List<Object?> get props => [filters];
+  List<Object?> get props => [minPrice, maxPrice, rooms, governorate, city];
 }

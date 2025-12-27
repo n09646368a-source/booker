@@ -9,6 +9,7 @@ class ApartmentModel {
   final int rooms;
   final int floor;
   final int bathrooms;
+  
 
   ApartmentModel({
     required this.id,

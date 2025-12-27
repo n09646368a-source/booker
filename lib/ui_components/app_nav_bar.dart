@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_6/screens/favorites_screen.dart';
 import 'package:flutter_application_6/screens/home_screen.dart';
+import 'package:flutter_application_6/screens/login_screen.dart';
 
 import '../screens/explore_screen.dart';
 import '../screens/profile_screen.dart';
@@ -25,6 +26,36 @@ class _AppNavBarState extends State<AppNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Booker'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            tooltip: 'Log out',
+            onPressed: () async {
+              final doLogout = await showDialog<bool>(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('Log out'),
+                  content: const Text('Are you sure you want to log out?'),
+                  actions: [
+                    TextButton(onPressed: () => Navigator.of(context).pop(false), child: const Text('Cancel')),
+                    TextButton(onPressed: () => Navigator.of(context).pop(true), child: const Text('Log out')),
+                  ],
+                ),
+              );
+
+              if (doLogout == true) {
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (_) => const LoginScreen()),
+                  (route) => false,
+                );
+              }
+            },
+          ),
+        ],
+      ),
       body: pages[currentPage],
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (value) {
@@ -45,9 +76,9 @@ class _AppNavBarState extends State<AppNavBar> {
             selectedIcon: Icon(Icons.favorite, color: Colors.blue),
           ),
           NavigationDestination(
-            icon: Icon(Icons.explore),
-            label: 'Explore',
-            selectedIcon: Icon(Icons.explore, color: Colors.blue),
+            icon: Icon(Icons.add),
+            label: 'Add Apartment',
+            selectedIcon: Icon(Icons.add, color: Colors.blue),
           ),
           NavigationDestination(
             icon: Icon(Icons.my_library_books),

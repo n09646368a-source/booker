@@ -81,7 +81,7 @@ class AppartmentDetailsScreen extends StatelessWidget {
 
             const SizedBox(height: 20),
 
-            // تفاصيل الشقة مبنية من حقول `ApartmentModel`
+            
             GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),

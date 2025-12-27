@@ -18,10 +18,12 @@ class HomeLoading extends HomeState {
 
 class HomeLoaded extends HomeState {
   final List<ApartmentModel> apartments;
-  const HomeLoaded(this.apartments);
+  final Map<String, List<String>> locations;
+  
+  const HomeLoaded(this.apartments, [this.locations = const {}]);
 
   @override
-  List<Object?> get props => [apartments];
+  List<Object?> get props => [apartments, locations];
 }
 
 class HomeError extends HomeState {
