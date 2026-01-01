@@ -1,8 +1,20 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_6/ui_components/app_nav_bar.dart';
 
+import 'auto_generated/codegen_loader.g.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp(
+    EasyLocalization(
+      assetLoader: const CodegenLoader(),
+      // startLocale: SharedStorage.language.locale,
+      // fallbackLocale: Language.arabic.locale,
+      path: 'assets/l10n',
+      supportedLocales: [Locale('en'), Locale('ar')],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -13,41 +25,3 @@ class MyApp extends StatelessWidget {
     return MaterialApp(home: AppNavBar());
   }
 }
-
-// class LogInPage extends StatelessWidget {
-//   LogInPage({super.key});
-//   TextEditingController userName = TextEditingController();
-//   TextEditingController password = TextEditingController();
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Padding(
-//         padding: const EdgeInsets.all(30.0),
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.center,
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           spacing: 20,
-//           children: [
-//             SizedBox(height: 20),
-//             TextField(
-//               controller: userName,
-//               decoration: InputDecoration(hintText: "userName"),
-//             ),
-//             SizedBox(height: 20),
-//             TextField(
-//               controller: password,
-//               decoration: InputDecoration(hintText: "password"),
-//             ),
-//             ElevatedButton(
-//               onPressed: () {
-//                 print("User: ${userName.text}");
-//                 print("Pass: ${password.text}");
-//               },
-//               child: const Text("Log In"),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_6/auto_generated/locale_keys.g.dart';
 import '../models/apartment_model.dart';
 import '../ui_components/detail_widget.dart';
 
@@ -12,9 +13,9 @@ class AppartmentDetailsScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: ElevatedButton(
         onPressed: () {},
-        child: const Text('Book Now'),
+        child: Text(LocaleKeys.book_now),
       ),
-      appBar: AppBar(title: const Text('Details'), centerTitle: true),
+      appBar: AppBar(title: const Text(LocaleKeys.details), centerTitle: true),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(12),
         child: Column(
@@ -81,7 +82,6 @@ class AppartmentDetailsScreen extends StatelessWidget {
 
             const SizedBox(height: 20),
 
-            
             GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -94,10 +94,7 @@ class AppartmentDetailsScreen extends StatelessWidget {
               itemCount: 6,
               itemBuilder: (context, index) {
                 final items = [
-                  {
-                    'name': 'Space',
-                    'value': '${model.apartmentSpace} m²',
-                  },
+                  {'name': 'Space', 'value': '${model.apartmentSpace} m²'},
                   {'name': 'Rooms', 'value': '${model.rooms}'},
                   {'name': 'Floor', 'value': '${model.floor}'},
                   {'name': 'Bathrooms', 'value': '${model.bathrooms}'},
